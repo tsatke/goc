@@ -21,8 +21,8 @@ func init() {
 var prefsCmd = &cobra.Command{
 	Use:     "prefs",
 	Aliases: []string{"preferences", "settings", "opts", "options"},
-	Short:   "Version prints the version information.",
-	Long:    "Version prints the version information about the build that you are using.",
+	Short:   "TODO",
+	Long:    "TODO",
 }
 
 func loadCfg() *viper.Viper {

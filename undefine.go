@@ -16,11 +16,8 @@ var undefineCmd = &cobra.Command{
 	Use:   "undefine",
 	Short: "Undefine removes a created command.",
 	Long:  `TODO`,
+	Args:  cobra.ExactArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
-		if len(args) != 1 {
-			return fmt.Errorf("Need exactly one argument, got %v", len(args))
-		}
-
 		Prompt := Cfg.GetBool("cmd.undefine.prompt")
 		if Prompt {
 			panic("TODO")

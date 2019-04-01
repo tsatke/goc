@@ -14,6 +14,7 @@ var getCmd = &cobra.Command{
 	Use:   "get",
 	Short: "TODO",
 	Long:  "TODO",
+	Args:  cobra.ExactArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
 		if len(args) != 1 {
 			return fmt.Errorf("Need exactly one argument, got %v", len(args))

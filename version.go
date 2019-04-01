@@ -22,6 +22,7 @@ var versionCmd = &cobra.Command{
 	Aliases: []string{"ver"},
 	Short:   "Version prints the version information.",
 	Long:    "Version prints the version information about the build that you are using.",
+	Args:    cobra.ExactArgs(0),
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Printf(versionFmt, Version)
 	},
