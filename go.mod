@@ -1,4 +1,4 @@
-module gitlab.com/TimSatke/define
+module gitlab.com/TimSatke/goc
 
 go 1.12
 
