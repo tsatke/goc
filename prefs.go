@@ -9,6 +9,7 @@ import (
 )
 
 var (
+	// Cfg is the globally used configuration.
 	Cfg *viper.Viper
 )
 
