@@ -13,6 +13,8 @@ var rootCmd = &cobra.Command{
 	Long:  `Cmd procides sub-commands such as define or undefine, that let you create or delete custom commands on the fly.`,
 }
 
+// Execute is the entry point for command execution.
+// See spf13/cobra documentation for more information.
 func Execute() {
 	if err := rootCmd.Execute(); err != nil {
 		fmt.Println(err)
