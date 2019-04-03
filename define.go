@@ -1,7 +1,6 @@
 package goc
 
 import (
-	"fmt"
 	"os"
 	"os/exec"
 	"path"
@@ -19,29 +18,33 @@ var defineCmd = &cobra.Command{
 	Long:  `Define attempts to open vim to let you create your command. Vim must be installed.`,
 	Args:  cobra.ExactArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
-		CmdOutputDirectory := Cfg.GetString("cmd.output.directory")
-
-		command := exec.Command(Cfg.GetString("cmd.define.editor"), path.Join(CmdOutputDirectory, args[0]))
-		command.Stdout = os.Stdout
-		command.Stdin = os.Stdin
-		command.Stderr = os.Stderr
-
-		err := command.Run()
-		if err != nil {
-			return err
-		}
-
-		command = exec.Command("chmod", "-R", "a+x", CmdOutputDirectory)
-		command.Stdout = os.Stdout
-		command.Stdin = os.Stdin
-		command.Stderr = os.Stderr
-
-		err = command.Run()
-		if err != nil {
-			return err
-		}
-
-		fmt.Printf("Done, you can now use the command %v.\n", args[0])
-		return nil
+		return define(args...)
 	},
+}
+
+func define(args ...string) error {
+	CmdOutputDirectory := Cfg.GetString("cmd.output.directory")
+
+	command := exec.Command(Cfg.GetString("cmd.define.editor"), path.Join(CmdOutputDirectory, args[0]))
+	command.Stdout = os.Stdout
+	command.Stdin = os.Stdin
+	command.Stderr = os.Stderr
+
+	err := command.Run()
+	if err != nil {
+		return err
+	}
+
+	command = exec.Command("chmod", "-R", "a+x", CmdOutputDirectory)
+	command.Stdout = os.Stdout
+	command.Stdin = os.Stdin
+	command.Stderr = os.Stderr
+
+	err = command.Run()
+	if err != nil {
+		return err
+	}
+
+	Printf("Done, you can now use the command %v.\n", args[0])
+	return nil
 }

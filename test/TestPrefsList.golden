@@ -1,0 +1,15 @@
+Setting cmd.output.directory = /var/lib/tools
+Setting myTestKey1 = myTestValue1
+Setting myTestKey2 = myTestValue2
+Setting myTest.Key.3 = myTest.Value.3
+Setting a b c d = some value
+Setting l00K at my special characters: !@#$%^&*()_[];'\{}:"| = another value... I guess
+Listing all properties
+a b c d    = some value
+cmd.define.editor = vim       
+cmd.output.directory = /var/lib/tools
+cmd.undefine.prompt = true      
+l00k at my special characters: !@#$%^&*()_[];'\{}:"| = another value... I guess
+mytest.key.3 = myTest.Value.3
+mytestkey1 = myTestValue1
+mytestkey2 = myTestValue2
