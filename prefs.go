@@ -1,7 +1,6 @@
 package goc
 
 import (
-	"fmt"
 	"os"
 
 	"github.com/spf13/cobra"
@@ -37,7 +36,7 @@ func loadCfg() *viper.Viper {
 
 	err := cfg.ReadInConfig()
 	if err != nil {
-		fmt.Printf("Error while reading: %v\n", err)
+		Printf("Error while reading: %v\n", err)
 	}
 
 	err = cfg.WriteConfig()
