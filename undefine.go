@@ -1,7 +1,6 @@
 package goc
 
 import (
-	"fmt"
 	"os"
 	"path"
 
@@ -17,24 +16,32 @@ var undefineCmd = &cobra.Command{
 	Short: "Undefine removes a created command.",
 	Long:  `TODO`,
 	Args:  cobra.ExactArgs(1),
-	RunE: func(cmd *cobra.Command, args []string) error {
-		return undefine(args...)
+	Run: func(cmd *cobra.Command, args []string) {
+		undefine(args...)
 	},
 }
 
-func undefine(args ...string) error {
-	prompt := Cfg.GetBool("cmd.undefine.prompt")
-	if prompt {
-		panic("TODO") // #1 Prompt on undefine
-	}
-
+func undefine(args ...string) {
 	CmdOutputDirectory := Cfg.GetString("cmd.output.directory")
 
-	err := os.Remove(path.Join(CmdOutputDirectory, args[0]))
+	path := path.Join(CmdOutputDirectory, args[0])
+	if _, err := os.Stat(path); os.IsNotExist(err) {
+		Printf("undefine: %v\n", err)
+		return
+	}
+
+	shouldPrompt := Cfg.GetBool("cmd.undefine.prompt")
+	if shouldPrompt {
+		if !Prompt("Really? (y/n) ") {
+			return
+		}
+	}
+
+	err := os.Remove(path)
 	if err != nil {
-		return fmt.Errorf("undefine: %v", err)
+		Printf("undefine: %v\n", err)
+		return
 	}
 
 	Printf("Done, the command %v has been removed.\n", args[0])
-	return nil
 }
