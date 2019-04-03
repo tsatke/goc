@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"strings"
 )
 
 var (
@@ -26,4 +27,11 @@ func Println(args ...interface{}) {
 
 func Printf(format string, args ...interface{}) {
 	io.WriteString(Out, fmt.Sprintf(format, args...))
+}
+
+func Prompt(text string) bool {
+	Print(text)
+	var input string
+	fmt.Scanln(&input)
+	return strings.ToLower(input) == "y"
 }
