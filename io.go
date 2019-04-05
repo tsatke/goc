@@ -5,6 +5,8 @@ import (
 	"io"
 	"os"
 	"strings"
+
+	"gitlab.com/TimSatke/abc"
 )
 
 var (
@@ -18,20 +20,32 @@ func init() {
 }
 
 func Print(args ...interface{}) {
-	io.WriteString(Out, fmt.Sprint(args...))
+	_, err := io.WriteString(Out, fmt.Sprint(args...))
+	if err != nil {
+		abc.Errorf("Unable to write to desired output: %v", err)
+	}
 }
 
 func Println(args ...interface{}) {
-	io.WriteString(Out, fmt.Sprintln(args...))
+	_, err := io.WriteString(Out, fmt.Sprintln(args...))
+	if err != nil {
+		abc.Errorf("Unable to write line to desired output: %v", err)
+	}
 }
 
 func Printf(format string, args ...interface{}) {
-	io.WriteString(Out, fmt.Sprintf(format, args...))
+	_, err := io.WriteString(Out, fmt.Sprintf(format, args...))
+	if err != nil {
+		abc.Errorf("Unable to write format to desired output: %v", err)
+	}
 }
 
 func Prompt(text string) bool {
 	Print(text)
 	var input string
-	fmt.Scanln(&input)
+	_, err := fmt.Scanln(&input)
+	if err != nil {
+		abc.Errorf("Unable to from desired input: %v", err)
+	}
 	return strings.ToLower(input) == "y"
 }
