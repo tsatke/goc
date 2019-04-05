@@ -2,6 +2,7 @@ package goc
 
 import (
 	"os"
+	"path/filepath"
 
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
@@ -32,9 +33,14 @@ func loadCfg() *viper.Viper {
 	cfg.SetDefault("cmd.define.editor", "vim")
 	cfg.SetDefault("cmd.undefine.prompt", true)
 
+	cd, err := filepath.Abs(filepath.Dir(os.Args[0]))
+	if err != nil {
+		panic(err)
+	}
+	cfg.AddConfigPath(cd)
 	cfg.SetConfigFile("define.yaml")
 
-	err := cfg.ReadInConfig()
+	err = cfg.ReadInConfig()
 	if err != nil {
 		Printf("Error while reading: %v\n", err)
 	}
