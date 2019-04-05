@@ -10,7 +10,8 @@ import (
 
 var (
 	// Cfg is the globally used configuration.
-	Cfg *viper.Viper
+	Cfg     *viper.Viper
+	CfgPath string
 )
 
 func init() {
@@ -38,15 +39,16 @@ func loadCfg() *viper.Viper {
 		panic(err)
 	}
 
-	cfgPath := path.Join(path.Dir(wd), "define.yaml")
-	cfg.SetConfigFile(cfgPath)
+	CfgPath = path.Join(path.Dir(wd), "define.yaml")
+
+	cfg.SetConfigFile(CfgPath)
 
 	err = cfg.ReadInConfig()
 	if err != nil {
 		Println("It seems like there is no configuration file yet. It will be created.")
 	}
 
-	err = cfg.WriteConfigAs(cfgPath)
+	err = cfg.WriteConfigAs(CfgPath)
 	if err != nil {
 		panic(err)
 	}
