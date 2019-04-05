@@ -33,6 +33,7 @@ func loadCfg() *viper.Viper {
 	cfg.SetDefault("cmd.output.directory", os.Getenv("HOME")+"/Development/tools")
 	cfg.SetDefault("cmd.define.editor", "vim")
 	cfg.SetDefault("cmd.undefine.prompt", true)
+	cfg.SetDefault("cmd.prefs.clear.prompt", true)
 
 	wd, err := os.Executable()
 	if err != nil {

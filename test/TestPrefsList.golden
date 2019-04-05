@@ -8,6 +8,7 @@ Listing all properties
 a b c d    = some value
 cmd.define.editor = vim       
 cmd.output.directory = /var/lib/tools
+cmd.prefs.clear.prompt = true      
 cmd.undefine.prompt = true      
 l00k at my special characters: !@#$%^&*()_[];'\{}:"| = another value... I guess
 mytest.key.3 = myTest.Value.3
