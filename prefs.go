@@ -2,7 +2,7 @@ package goc
 
 import (
 	"os"
-	"path/filepath"
+	"path"
 
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
@@ -33,19 +33,20 @@ func loadCfg() *viper.Viper {
 	cfg.SetDefault("cmd.define.editor", "vim")
 	cfg.SetDefault("cmd.undefine.prompt", true)
 
-	cd, err := filepath.Abs(filepath.Dir(os.Args[0]))
+	wd, err := os.Executable()
 	if err != nil {
 		panic(err)
 	}
-	cfg.AddConfigPath(cd)
-	cfg.SetConfigFile("define.yaml")
+
+	cfgPath := path.Join(path.Dir(wd), "define.yaml")
+	cfg.SetConfigFile(cfgPath)
 
 	err = cfg.ReadInConfig()
 	if err != nil {
-		Printf("Error while reading: %v\n", err)
+		Println("It seems like there is no configuration file yet. It will be created.")
 	}
 
-	err = cfg.WriteConfig()
+	err = cfg.WriteConfigAs(cfgPath)
 	if err != nil {
 		panic(err)
 	}
