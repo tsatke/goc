@@ -22,6 +22,13 @@ var clearCmd = &cobra.Command{
 }
 
 func prefsClear(args ...string) {
+	shouldPrompt := Cfg.GetBool("cmd.prefs.clear.prompt")
+	if shouldPrompt {
+		if !Prompt("Really? (y/n) ") {
+			return
+		}
+	}
+
 	err := os.Remove(CfgPath)
 	if err != nil {
 		Printf("Unable to delete config file: %v", err)
