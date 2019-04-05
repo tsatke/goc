@@ -24,6 +24,9 @@ var defineCmd = &cobra.Command{
 
 func define(args ...string) error {
 	CmdOutputDirectory := Cfg.GetString("cmd.output.directory")
+	if _, err := os.Stat(CmdOutputDirectory); os.IsNotExist(err) {
+		return err
+	}
 
 	command := exec.Command(Cfg.GetString("cmd.define.editor"), path.Join(CmdOutputDirectory, args[0]))
 	command.Stdout = os.Stdout
