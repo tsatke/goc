@@ -9,7 +9,7 @@ import (
 var rootCmd = &cobra.Command{
 	Use:   "goc",
 	Short: "Cmd enables you to define or undefine custom commands.",
-	Long:  `Cmd procides sub-commands such as define or undefine, that let you create or delete custom commands on the fly.`,
+	Long:  `Cmd provides sub-commands such as define or undefine, that let you create or delete custom commands on the fly.`,
 }
 
 // Execute is the entry point for command execution.
