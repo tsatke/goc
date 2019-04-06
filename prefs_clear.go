@@ -13,8 +13,8 @@ func init() {
 var clearCmd = &cobra.Command{
 	Use:     "clear",
 	Aliases: []string{"reset", "rm", "cls", "remove"},
-	Short:   "TODO",
-	Long:    "TODO",
+	Short:   "Resets all preferences to default.",
+	Long:    "Deletes the preference file, which will then be re-created on the next command using a preference that you use.",
 	Args:    cobra.ExactArgs(0),
 	Run: func(cmd *cobra.Command, args []string) {
 		prefsClear(args...)

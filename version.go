@@ -9,10 +9,6 @@ func init() {
 }
 
 var (
-	// Version information that can be set during the build with
-	// the build option
-	//
-	//	-ldflags "-X goc.Version=1.0.0"
 	Version    = "99.9.9-developer-preview"
 	versionFmt = `(c) 2019-today Tim-Philipp Satke
 go-command (goc) v%v

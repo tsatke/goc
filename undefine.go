@@ -14,7 +14,7 @@ func init() {
 var undefineCmd = &cobra.Command{
 	Use:   "undefine",
 	Short: "Undefine removes a created command.",
-	Long:  `TODO`,
+	Long:  "Undefine deletes the command file in the defined output path, and will prompt the operation with respect to the setting \"cmd.undefine.prompt\".",
 	Args:  cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		undefine(args...)
