@@ -16,17 +16,15 @@ var clearCmd = &cobra.Command{
 	Short:   "Resets all preferences to default.",
 	Long:    "Deletes the preference file, which will then be re-created on the next command using a preference that you use.",
 	Args:    cobra.ExactArgs(0),
-	Run: func(cmd *cobra.Command, args []string) {
-		prefsClear(args...)
+	Run: func(*cobra.Command, []string) {
+		prefsClear()
 	},
 }
 
-func prefsClear(args ...string) {
+func prefsClear() {
 	shouldPrompt := Cfg.GetBool("cmd.prefs.clear.prompt")
-	if shouldPrompt {
-		if !Prompt("Really? (y/n) ") {
-			return
-		}
+	if shouldPrompt && !Prompt("Really? (y/n) ") {
+		return
 	}
 
 	err := os.Remove(CfgPath)

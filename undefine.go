@@ -16,7 +16,7 @@ var undefineCmd = &cobra.Command{
 	Short: "Undefine removes a created command.",
 	Long:  "Undefine deletes the command file in the defined output path, and will prompt the operation with respect to the setting \"cmd.undefine.prompt\".",
 	Args:  cobra.ExactArgs(1),
-	Run: func(cmd *cobra.Command, args []string) {
+	Run: func(_ *cobra.Command, args []string) {
 		undefine(args...)
 	},
 }
@@ -31,10 +31,8 @@ func undefine(args ...string) {
 	}
 
 	shouldPrompt := Cfg.GetBool("cmd.undefine.prompt")
-	if shouldPrompt {
-		if !Prompt("Really? (y/n) ") {
-			return
-		}
+	if shouldPrompt && !Prompt("Really? (y/n) ") {
+		return
 	}
 
 	err := os.Remove(path)

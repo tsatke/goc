@@ -14,12 +14,12 @@ var libCmd = &cobra.Command{
 	Short:   "List third-party dependencies.",
 	Long:    "Lists all used third-party libraries together with their respective license.",
 	Args:    cobra.ExactArgs(0),
-	Run: func(cmd *cobra.Command, args []string) {
-		libs(args...)
+	Run: func(*cobra.Command, []string) {
+		libs()
 	},
 }
 
-func libs(args ...string) {
+func libs() {
 	type Lib struct {
 		Name    string
 		Version string
