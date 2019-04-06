@@ -11,8 +11,8 @@ func init() {
 var libCmd = &cobra.Command{
 	Use:     "libs",
 	Aliases: []string{"lib"},
-	Short:   "TODO",
-	Long:    "TODO",
+	Short:   "List third-party dependencies.",
+	Long:    "Lists all used third-party libraries together with their respective license.",
 	Args:    cobra.ExactArgs(0),
 	Run: func(cmd *cobra.Command, args []string) {
 		libs(args...)
