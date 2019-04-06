@@ -1,5 +1,0 @@
-title: The configuration file is now loaded from and saved to the same directory as
-  the executable file
-type: Change
-mergerequest: "7"
-author: TimSatke

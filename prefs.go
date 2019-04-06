@@ -23,8 +23,7 @@ func init() {
 var prefsCmd = &cobra.Command{
 	Use:     "prefs",
 	Aliases: []string{"preferences", "settings", "opts", "options"},
-	Short:   "TODO",
-	Long:    "TODO",
+	Short:   "The base command for preference commands.",
 }
 
 func loadCfg() *viper.Viper {
