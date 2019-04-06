@@ -12,14 +12,19 @@ func init() {
 
 var getCmd = &cobra.Command{
 	Use:   "get",
-	Short: "TODO",
-	Long:  "TODO",
+	Short: "Prints a preference by key.",
+	Long:  "Given a preference key, this command prints the key and its current value.",
+	Args:  cobra.ExactArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
-		if len(args) != 1 {
-			return fmt.Errorf("Need exactly one argument, got %v", len(args))
-		}
-
-		fmt.Printf("%-10v = %-10v\n", args[0], Cfg.Get(args[0]))
-		return nil
+		return prefsGet(args...)
 	},
+}
+
+func prefsGet(args ...string) error {
+	if len(args) != 1 {
+		return fmt.Errorf("Need exactly one argument, got %v", len(args))
+	}
+
+	Printf("%-10v = %-10v\n", args[0], Cfg.Get(args[0]))
+	return nil
 }
