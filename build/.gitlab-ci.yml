@@ -59,7 +59,7 @@ analysis:
 build:
   stage: build
   script:
-    - go build -o ${ARTIFACTS_DIR}/goc -ldflags "-X main.version=${CI_COMMIT_REF_SLUG}" ./cmd
+    - go build -o ${ARTIFACTS_DIR}/goc -ldflags "-X goc.Version=TODO" ./cmd
   artifacts:
     paths:
       - ${ARTIFACTS_DIR}
@@ -74,7 +74,7 @@ build-all:
     >
       for GOOS in darwin linux windows; do
         for GOARCH in 386 amd64; do
-          go build -v -a -installsuffix cgo -o ${CI_PROJECT_DIR}/${ARTIFACTS_DIR}/${BIN_NAME}-${GOOS}-${GOARCH} -ldflags "-extldflags '-static' -X main.version=${CI_COMMIT_REF_SLUG}" ./cmd
+          go build -v -a -installsuffix cgo -o ${CI_PROJECT_DIR}/${ARTIFACTS_DIR}/${BIN_NAME}-${GOOS}-${GOARCH} -ldflags "-extldflags '-static'" ./cmd
         done
       done
   artifacts:

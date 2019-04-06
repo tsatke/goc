@@ -12,8 +12,8 @@ func init() {
 
 var setCmd = &cobra.Command{
 	Use:   "set",
-	Short: "Set a preference key to a given value.",
-	Long:  "Sets a preference to a given value. \"prefs set <key> <value>\" will set <key> to <value>. Changes instantly apply.",
+	Short: "TODO",
+	Long:  "TODO",
 	Args:  cobra.ExactArgs(2),
 	RunE: func(cmd *cobra.Command, args []string) error {
 		return prefsSet(args...)

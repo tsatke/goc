@@ -12,8 +12,8 @@ func init() {
 
 var getCmd = &cobra.Command{
 	Use:   "get",
-	Short: "Prints a preference by key.",
-	Long:  "Given a preference key, this command prints the key and its current value.",
+	Short: "TODO",
+	Long:  "TODO",
 	Args:  cobra.ExactArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
 		return prefsGet(args...)
