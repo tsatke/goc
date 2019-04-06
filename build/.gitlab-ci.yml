@@ -17,6 +17,9 @@ test:
   stage: test
   script:
     - go test -v -race -coverprofile=coverage.txt -covermode=atomic ./...
+  artifacts:
+    paths:
+      - coverage.txt
 
 sonarcloud-scan:
   stage: analysis
