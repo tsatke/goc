@@ -2,6 +2,7 @@ image: golang:latest
 
 variables:
   ARTIFACTS_DIR: goc
+  BIN_NAME: goc
   GO_PROJECT: gitlab.com/TimSatke/goc
 
 stages:
@@ -59,7 +60,7 @@ analysis:
 build:
   stage: build
   script:
-    - go build -o ${ARTIFACTS_DIR}/goc -ldflags "-X main.version=${CI_COMMIT_REF_SLUG}" ./cmd
+    - go build -o ${ARTIFACTS_DIR}/${BIN_NAME} -ldflags "-X main.version=${CI_COMMIT_REF_SLUG}" ./cmd
   artifacts:
     paths:
       - ${ARTIFACTS_DIR}
