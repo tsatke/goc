@@ -1,0 +1,16 @@
+Setting myTestKey1 = myTestValue1
+Setting myTestKey2 = myTestValue2
+Setting myTest.Key.3 = myTest.Value.3
+Setting a b c d = some value
+Setting l00K at my special characters: !@#$%^&*()_[];'\{}:"| = another value... I guess
+myTestKey1 = myTestValue1
+myTestKey2 = myTestValue2
+myTest.Key.3 = myTest.Value.3
+a b c d    = some value
+l00K at my special characters: !@#$%^&*()_[];'\{}:"| = another value... I guess
+Does not exist = <nil>     
+does not yet exist = <nil>     
+Setting does not yet exist = but now it does
+does not yet exist = but now it does
+Setting myTest.Key.3 = myTest.Value.4
+myTest.Key.3 = myTest.Value.4
